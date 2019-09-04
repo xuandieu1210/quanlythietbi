@@ -13,7 +13,10 @@ use Yii;
  * @property int $id_donvi
  * @property int $quanly
  *
+ * @property Dotkiemke[] $dotkiemkes
  * @property Thietbi[] $thietbis
+ * @property Thongbaothaydoi[] $thongbaothaydois
+ * @property Thongbaothaydoi[] $thongbaothaydois0
  * @property Donvi $donvi
  * @property User $quanly0
  */
@@ -58,9 +61,33 @@ class Tram extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getDotkiemkes()
+    {
+        return $this->hasMany(Dotkiemke::className(), ['id_tram' => 'id_tram']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getThietbis()
     {
         return $this->hasMany(Thietbi::className(), ['id_tram' => 'id_tram']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getThongbaothaydois()
+    {
+        return $this->hasMany(Thongbaothaydoi::className(), ['id_tramdich' => 'id_tram']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getThongbaothaydois0()
+    {
+        return $this->hasMany(Thongbaothaydoi::className(), ['id_tramnguon' => 'id_tram']);
     }
 
     /**

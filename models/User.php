@@ -27,9 +27,6 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
-    public $password;
-    public $newPassword;
-    public $confirmPassword;
     /**
      * @inheritdoc
      */
@@ -226,5 +223,29 @@ class User extends ActiveRecord implements IdentityInterface
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDotkiemkes()
+    {
+        return $this->hasMany(Dotkiemke::className(), ['created_by' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::className(), ['id_user' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTrams()
+    {
+        return $this->hasMany(Tram::className(), ['quanly' => 'id']);
     }
 }

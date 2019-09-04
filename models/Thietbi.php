@@ -13,9 +13,11 @@ use Yii;
  * @property int $id_tram
  * @property int $status
  *
+ * @property Lichsukiemke[] $lichsukiemkes
  * @property Nhomthietbi $nhom
  * @property Tram $tram
  * @property ThietbiThuoctinh[] $thietbiThuoctinhs
+ * @property Thongbaothaydoi[] $thongbaothaydois
  */
 class Thietbi extends \yii\db\ActiveRecord
 {
@@ -58,6 +60,14 @@ class Thietbi extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getLichsukiemkes()
+    {
+        return $this->hasMany(Lichsukiemke::className(), ['id_thietbi' => 'id_thietbi']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getNhom()
     {
         return $this->hasOne(Nhomthietbi::className(), ['id_nhom' => 'id_nhom']);
@@ -77,5 +87,13 @@ class Thietbi extends \yii\db\ActiveRecord
     public function getThietbiThuoctinhs()
     {
         return $this->hasMany(ThietbiThuoctinh::className(), ['id_thietbi' => 'id_thietbi']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getThongbaothaydois()
+    {
+        return $this->hasMany(Thongbaothaydoi::className(), ['id_thietbi' => 'id_thietbi']);
     }
 }

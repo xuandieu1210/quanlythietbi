@@ -12,8 +12,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_tram')->textInput() ?>
-
     <?= $form->field($model, 'ten_tram')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'diachi')->textInput(['maxlength' => true]) ?>

@@ -7,6 +7,7 @@ use Yii;
 /**
  * This is the model class for table "thietbi_thuoctinh".
  *
+ * @property int $id
  * @property int $id_thietbi
  * @property int $id_thuoctinh
  * @property string $value
@@ -44,6 +45,7 @@ class ThietbiThuoctinh extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'id' => 'ID',
             'id_thietbi' => 'Id Thietbi',
             'id_thuoctinh' => 'Id Thuoctinh',
             'value' => 'Value',
